@@ -1,3 +1,12 @@
+/**
+ * InsertStyle - Insert style tag into head of document
+ *
+ * @function InsertStyle
+ * @param {string} url - Stylesheet url
+ * @param {string} [id] - Id for the <link> tag
+ * @param {String[]} [classes] - Classes for the <link> tag
+ * @param {docLoad} cb - Callback function called once the style is loaded
+ */
 define('Util/InsertStyle', ['jquery'], ($) => {
 
 	$.extend({

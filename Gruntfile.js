@@ -3,19 +3,25 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
+		alias: {},
 		clean: {
 			options: {
 				paths: [
-					'.Build/tmp'
+					'.Build/tmp',
+					'docs',
+					'README.md',
+					'web.core.js'
 				]
 			}
 		},
 		concat: {
-			all: {
+			default: {
 				files: {
-					'index.js': [
+					'web.core.js': [
+							'.Build/tmp/index.js',
 							'src/config.js',
 							'.Build/tmp/requirejs.min.js',
+							'src/plugins/*.js',
 							'.Build/tmp/lodash.min.js',
 							'.Build/tmp/jquery.min.js',
 							'.Build/tmp/jquery-ui.min.js',
@@ -33,8 +39,32 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		doc: {
+			options: {
+				output: '.Build/tmp/index.js',
+				packages: [
+					'lodash',
+					'jquery',
+					'jqueryui',
+					'@popperjs/core',
+					'bootstrap',
+					'notifyjs-browser',
+					'@js/core'
+				]
+			}
+		},
+		jsdoc: {
+			default: {
+				src: [".Build/tmp/index.js", "src/config.js", "src/Util", "src/plugins", "README.md"],
+				options: {
+					"destination": "docs",
+					"template": ".Build/templates/docs/template",
+					"configure": "jsdoc.conf"
+				}
+			}
+		},
 		make: {
-			all: {
+			default: {
 				files: {
 					'core.js': [require.resolve('@js/core')],
 					'bootstrap.js': [require.resolve('bootstrap')],
@@ -74,8 +104,14 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		readme: {
+			options: {
+				output: 'README.md',
+				template: '.Build/templates/readme'
+			}
+		},
 		replacements: {
-			all: {
+			default: {
 				options: {
 					files: {
 						'bootstrap.js': [[/define\(/, 'define(\'bootstrap\', ']],
@@ -99,6 +135,12 @@ module.exports = function(grunt) {
 	})
 
 	grunt.loadTasks('.Build/tasks')
-	grunt.registerTask('all', ['clean', 'make', 'replacements', 'minify', 'styles', 'concat']);
+	grunt.loadNpmTasks('grunt-jsdoc')
+
+	grunt.registerTask('default', ['clean', 'make', 'replacements', 'minify', 'styles', 'concat', 'docs', 'alias']);
+	grunt.registerTask('docs', ['doc', 'readme', 'jsdoc'])
+	grunt.registerTask('major', ['rev:major'])
+	grunt.registerTask('minor', ['rev:minor'])
+	grunt.registerTask('patch', ['rev:patch'])
 
 }

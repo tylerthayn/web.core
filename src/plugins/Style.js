@@ -1,3 +1,9 @@
+/**
+ * Style loader plugin for RequireJs
+ *
+ * @name style
+ * @global
+ */
 define('style', {
     load: function(name, req, onload, config) {
         let file = name;
