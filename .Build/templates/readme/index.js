@@ -34,7 +34,7 @@ module.exports = (ast) => {
 			}
 		} catch (e) {
 			logj(doclet)
-			process.exit()
+			//process.exit()
 		}
 	}
 

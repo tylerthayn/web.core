@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				paths: [
 					'.Build/tmp',
 					'docs',
-					'README.md',
+					//'README.md',
 					'web.core.js'
 				]
 			}
