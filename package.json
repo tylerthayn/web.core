@@ -1,44 +1,44 @@
 {
-  "name": "@tyler.thayn/web.core",
-  "alias": "@web/core",
-  "version": "0.1.0",
-  "description": "Core resources for web/browser based item",
-  "main": "web.core.js",
-  "scripts": {
-    "build": "grunt default",
-    "docs": "grunt docs",
-    "git": "git add * && git commit -m \"auto\" && git push",
-    "prepare": "grunt default && npm run-script git",
-    "postinstall": "node alias.js",
-    "readme": "grunt readme",
-    "registerAlias": "grunt alias:register",
-    "patch": "grunt patch",
-    "minor": "grunt minor",
-    "major": "grunt major"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tylerthayn/web.core.git"
-  },
-  "author": "TTS Design",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tylerthayn/web.core/issues"
-  },
-  "homepage": "https://github.com/tylerthayn/web.core#readme",
-  "devDependencies": {
-    "@popperjs/core": "^2.11.6",
-    "@tyler.thayn/js.core": "^0.13.14",
-    "bootstrap": "^5.2.1",
-    "grunt": "^1.4.1",
-    "grunt-jsdoc": "^2.4.1",
-    "jquery": "^3.6.1",
-    "jqueryui": "^1.11.1",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.4",
-    "notifyjs-browser": "^0.4.2",
-    "org-tts-js-core": "^1.0.3",
-    "requirejs": "^2.3.6",
-    "sanitize-html": "^2.7.2"
-  }
+    "name": "@tyler.thayn/web.core",
+    "alias": "@web/core",
+    "version": "0.1.1",
+    "description": "Core resources for web/browser based item",
+    "main": "web.core.js",
+    "scripts": {
+        "build": "grunt default",
+        "docs": "grunt docs",
+        "git": "git add * && git commit -m \"auto\" && git push",
+        "prepare": "grunt default && npm run-script git",
+        "postinstall": "node alias.js",
+        "readme": "grunt readme",
+        "registerAlias": "grunt alias:register",
+        "patch": "grunt patch",
+        "minor": "grunt minor",
+        "major": "grunt major"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tylerthayn/web.core.git"
+    },
+    "author": "TTS Design",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tylerthayn/web.core/issues"
+    },
+    "homepage": "https://github.com/tylerthayn/web.core#readme",
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@tyler.thayn/js.core": "^0.13.14",
+        "bootstrap": "^5.2.1",
+        "grunt": "^1.4.1",
+        "grunt-jsdoc": "^2.4.1",
+        "jquery": "^3.6.1",
+        "jqueryui": "^1.11.1",
+        "lodash": "^4.17.21",
+        "moment": "^2.29.4",
+        "notifyjs-browser": "^0.4.2",
+        "org-tts-js-core": "^1.0.3",
+        "requirejs": "^2.3.6",
+        "sanitize-html": "^2.7.2"
+    }
 }
