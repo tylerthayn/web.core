@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>org.tts.js.core.web</title>
+		<script src="@js.js" data-main="app"></script>
+		<script>
+			document.addEventListener('web-ready', function (e) {
+				typeof $ !== 'undefined' && log($)
+				typeof bootstrap !== 'undefined' && log(bootstrap)
+				Extend(window, e.detail)
+				typeof $ !== 'undefined' && log($)
+				typeof bootstrap !== 'undefined' && log(bootstrap)
+			})
+
+			function Start ($, bootstrap) {
+				console.log(arguments)
+			}
+
+		</script>
+	</head>
+	<body class="TTS App">
+		<i class="material-icons">face</i>
+	</body>
+</html>
+
+
+
+
+
+

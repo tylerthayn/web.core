@@ -1,0 +1,14 @@
+* Load @js/core
+* Load Helper Functions
+* Options processing
+	- Configurations
+	- Directories
+* RequireJs Config
+* Load RequireJs
+* ??RequireJs Config w/ Plugins
+* Load lodash, jQuery, Bootstrap, jQueryUi notifyjs scripts
+* Load Styles (jQueryUi, Bootstrap, TTS)
+* Main
+	* Events
+	* Load main script
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>org.tts.js.core.web</title>
+		<script src="../dist/js.core.web.js" data-basedir="" data-start="Start"></script>
+		<script>
+function Start ($, bootstrap) {
+	require(['App', 'App.Ui.Toolbar'], (App) => {
+		let app = window.app = new App()
+		log(app.name)
+		log(app.plugins)
+
+	})
+}
+		</script>
+	</head>
+	<body class="TTS App" data-name="Test App">
+		<div class="View UiToolbar"></div>
+
+		<i class="material-icons">face</i>
+	</body>
+</html>
+
+
+
+
+
+
