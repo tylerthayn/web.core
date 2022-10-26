@@ -30,6 +30,9 @@ module.exports = function(grunt) {
 							'.Build/tmp/notifyjs.min.js',
 							'.Build/tmp/core.js',
 							'.Build/tmp/Util.js',
+							'.Build/tmp/jquery.actions.js',
+							'.Build/tmp/jquery.properties.js',
+							'.Build/tmp/ui.loader.js',
 							'.Build/tmp/styles.js'
 					]
 				},
@@ -49,7 +52,7 @@ module.exports = function(grunt) {
 					'@popperjs/core',
 					'bootstrap',
 					'notifyjs-browser',
-					'@js/core'
+					'@tyler.thayn/js.core'
 				]
 			}
 		},
@@ -66,7 +69,7 @@ module.exports = function(grunt) {
 		make: {
 			default: {
 				files: {
-					'core.js': [require.resolve('@js/core')],
+					'core.js': [require.resolve('@tyler.thayn/js.core')],
 					'bootstrap.js': [require.resolve('bootstrap')],
 					'jquery.js': [require.resolve('jquery')],
 					'jquery-ui.js': [require.resolve('jqueryui')],
@@ -75,6 +78,9 @@ module.exports = function(grunt) {
 					'popperjs.js': [require.resolve('@popperjs/core').replace('cjs', 'umd')],
 					'requirejs.js': [require.resolve('requirejs').replace(/bin(\/|\\)r\.js/, 'require.js')],
 					'Util.js': ['src/Util/AddStyle.js', 'src/Util/InsertScript.js', 'src/Util/InsertStyle.js', 'src/Util/index.js'],
+					'jquery.actions.js': [require.resolve('@tyler.thayn/jquery.actions')],
+					'jquery.properties.js': [require.resolve('@tyler.thayn/jquery.properties')],
+					'ui.loader.js': [require.resolve('@tyler.thayn/ui.loader')]
 				},
 				options: {
 					folder: '.Build/tmp/',
@@ -92,7 +98,10 @@ module.exports = function(grunt) {
 					'lodash.js',
 					'notifyjs.js',
 					'popperjs.js',
-					'requirejs.js'
+					'requirejs.js',
+					'jquery.actions.js',
+					'jquery.properties.js',
+					'ui.loader.js'
 				],
 				folder: '.Build/tmp/',
 				uglify: {
@@ -119,6 +128,9 @@ module.exports = function(grunt) {
 						'lodash.js': [[/define\(/, 'define(\'lodash\', ']],
 						'notifyjs.js': [[/define\(/, 'define(\'notifyjs\', ']],
 						'popperjs.js': [[/define\(/, 'define(\'@popperjs/core\', ']], //[/^/, `(function () {\r\n`], [/$/, `\r\n}());`]
+						'jquery.actions.js': [[/define\(/, 'define(\'jquery.actions\', ']],
+						'jquery.properties.js': [[/define\(/, 'define(\'jquery.properties\', ']],
+						'ui.loader.js': [[/define\(/, 'define(\'ui.loader\', ']]
 					},
 					folder: '.Build/tmp/',
 					separator: '\n\n'

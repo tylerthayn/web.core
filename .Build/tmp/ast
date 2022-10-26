@@ -114,7 +114,7 @@
         "scope": "global"
     },
     {
-        "comment": "/**\n * @js/core@0.13.14\n * @external @js/core\n * @see {@link https://github.com/tylerthayn/js.core}\n */",
+        "comment": "/**\n * @tyler.thayn/js.core@0.13.14\n * @external @tyler.thayn/js.core\n * @see {@link https://github.com/tylerthayn/js.core}\n */",
         "meta": {
             "filename": "index.js",
             "lineno": 53,
@@ -124,25 +124,26 @@
         },
         "tags": [
             {
-                "originalTitle": "js/core@0.13.14",
-                "title": "js/core@0.13.14",
+                "originalTitle": "tyler.thayn/js.core@0.13.14",
+                "title": "tyler.thayn/js.core@0.13.14",
                 "text": ""
             }
         ],
         "kind": "external",
-        "name": "@js/core",
+        "name": "core",
         "see": [
             "{@link https://github.com/tylerthayn/js.core}"
         ],
-        "longname": "external:@js/core",
-        "scope": "global"
+        "memberof": "@tyler.thayn/js",
+        "longname": "@tyler.thayn/js.external:core",
+        "scope": "static"
     },
     {
         "comment": "",
         "meta": {
             "range": [
                 0,
-                252
+                324
             ],
             "filename": "config.js",
             "lineno": 1,
@@ -167,7 +168,7 @@
         "meta": {
             "range": [
                 14,
-                190
+                251
             ],
             "filename": "config.js",
             "lineno": 2,
@@ -177,7 +178,7 @@
                 "id": "astnode100000008",
                 "name": "deps",
                 "type": "ArrayExpression",
-                "value": "[\"lodash\",\"jquery\",\"jquery-ui\",\"@css/jquery-ui\",\"@popperjs/core\",\"bootstrap\",\"@css/bootstrap\",\"notifyjs\",\"@js/core\",\"@css/tts\"]"
+                "value": "[\"lodash\",\"jquery\",\"jquery-ui\",\"@css/jquery-ui\",\"@popperjs/core\",\"bootstrap\",\"@css/bootstrap\",\"notifyjs\",\"@js/core\",\"jquery.actions\",\"jquery.properties\",\"ui.loader\",\"@css/tts\"]"
             }
         },
         "undocumented": true,
@@ -191,15 +192,15 @@
         "comment": "",
         "meta": {
             "range": [
-                194,
-                249
+                255,
+                321
             ],
             "filename": "config.js",
-            "lineno": 14,
+            "lineno": 17,
             "columnno": 1,
             "path": "D:\\TTS\\development\\web.core\\src",
             "code": {
-                "id": "astnode100000020",
+                "id": "astnode100000023",
                 "name": "callback",
                 "type": "ArrowFunctionExpression"
             }
@@ -268,7 +269,7 @@
             "columnno": 2,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000048",
+                "id": "astnode100000051",
                 "name": "AddStyle",
                 "type": "ArrowFunctionExpression"
             },
@@ -295,7 +296,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000059",
+                "id": "astnode100000062",
                 "name": "_style",
                 "type": "CallExpression",
                 "value": ""
@@ -406,7 +407,7 @@
             "columnno": 2,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000138",
+                "id": "astnode100000141",
                 "name": "InsertScript",
                 "type": "ArrowFunctionExpression"
             },
@@ -437,7 +438,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000144",
+                "id": "astnode100000147",
                 "name": "file",
                 "type": "CallExpression",
                 "value": ""
@@ -463,7 +464,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000151",
+                "id": "astnode100000154",
                 "name": "id",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -489,7 +490,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000166",
+                "id": "astnode100000169",
                 "name": "classes",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -515,7 +516,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000182",
+                "id": "astnode100000185",
                 "name": "cb",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -541,7 +542,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000197",
+                "id": "astnode100000200",
                 "name": "script",
                 "type": "CallExpression",
                 "value": ""
@@ -622,7 +623,7 @@
             "columnno": 2,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000265",
+                "id": "astnode100000268",
                 "name": "InsertStyle",
                 "type": "ArrowFunctionExpression"
             },
@@ -653,7 +654,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000271",
+                "id": "astnode100000274",
                 "name": "file",
                 "type": "CallExpression",
                 "value": ""
@@ -679,7 +680,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000278",
+                "id": "astnode100000281",
                 "name": "id",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -705,7 +706,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000293",
+                "id": "astnode100000296",
                 "name": "classes",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -731,7 +732,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000309",
+                "id": "astnode100000312",
                 "name": "cb",
                 "type": "ConditionalExpression",
                 "value": ""
@@ -757,7 +758,7 @@
             "columnno": 7,
             "path": "D:\\TTS\\development\\web.core\\src\\Util",
             "code": {
-                "id": "astnode100000348",
+                "id": "astnode100000351",
                 "name": "style",
                 "type": "CallExpression",
                 "value": ""
@@ -798,7 +799,7 @@
             "columnno": 4,
             "path": "D:\\TTS\\development\\web.core\\src\\plugins",
             "code": {
-                "id": "astnode100000406",
+                "id": "astnode100000409",
                 "name": "load",
                 "type": "FunctionExpression"
             },
@@ -825,7 +826,7 @@
             "columnno": 12,
             "path": "D:\\TTS\\development\\web.core\\src\\plugins",
             "code": {
-                "id": "astnode100000414",
+                "id": "astnode100000417",
                 "name": "file",
                 "type": "Identifier",
                 "value": "name"
@@ -851,7 +852,7 @@
             "columnno": 12,
             "path": "D:\\TTS\\development\\web.core\\src\\plugins",
             "code": {
-                "id": "astnode100000432",
+                "id": "astnode100000435",
                 "name": "file",
                 "type": "CallExpression",
                 "funcscope": "<anonymous>",
@@ -878,7 +879,7 @@
             "columnno": 8,
             "path": "D:\\TTS\\development\\web.core\\src\\plugins",
             "code": {
-                "id": "astnode100000445",
+                "id": "astnode100000448",
                 "name": "file",
                 "type": "ConditionalExpression",
                 "funcscope": "load",

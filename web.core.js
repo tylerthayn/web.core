@@ -9,10 +9,13 @@ require = {
 		'@css/bootstrap',
 		'notifyjs',
 		'@js/core',
+		'jquery.actions',
+		'jquery.properties',
+		'ui.loader',
 		'@css/tts'
 	],
 	callback: (...modules) => {
-		console.log(modules)
+		console.log('@web/core loaded')
 	}
 }
 
@@ -458,7 +461,7 @@ const vn='toast',yn='mouseover.bs.toast',wn='mouseout.bs.toast',An='focusin.bs.t
 }(function (_) {
 
 	/**	
-	 * @module @js/core	
+	 * @module @tyler.thayn/js.core	
 	*/	
 		
 	/**	
@@ -1859,6 +1862,262 @@ define('Util/InsertStyle', ['jquery'], ($) => {
 
 define('Util', ['jquery', 'Util/AddStyle', 'Util/InsertScript', 'Util/InsertStyle'], ($) => {
 	return $
+})
+
+
+/**
+* @module @tyler.thayn/jquery.actions
+*/
+define('jquery.actions', ['jquery'], ($) => {
+
+	/** ActionHandler Callback
+	* @callback ActionHandler
+	* @param {Event} event
+	* @param {...*} [args]
+	*/
+
+	$.fn.extend({
+
+		/** Trigger Action for element
+		* @memberof jQuery#
+		* @function Action
+		* @param {string} name - Name of action to trigger
+		* @param {...*} [args] - Args to pass to action handler
+		*/
+		Action: function (name, ...args) {
+			this.each((i, e) => {
+				$(e).triggerHandler('action.'+name, args)
+			})
+		},
+
+		/** Register ActionHandler for element
+		* @memberof jQuery#
+		* @function ActionHandler
+		* @param {string} name - Action name to handle
+		* @param {ActionHandler} fn - Handler function
+		*/
+		ActionHandler: function (name, fn) {
+			this.each((i, e) => {
+				$(e).on('action.'+name, {action: name}, (event, ...args) => {
+					fn.call(e, ...args)
+				})
+			})
+		}
+	})
+
+
+	$.extend({
+		ActionHandlers: {
+			Hide: function (effect, cb = () => {}) {
+				$(this).hide(effect, () => {
+					$(this).triggerHandler('hidden')
+					cb()
+				})
+			},
+			Show: function (effect, cb = () => {}) {
+				$(this).show(effect, () => {
+					$(this).triggerHandler('shown')
+					cb()
+				})
+			},
+			Toggle: function (effect, cb = () => {}) {
+				$(this).toggle(effect, () => {
+					$(this).triggerHandler(this.style.display && this.style.display == 'none' ? 'hidden' : 'shown')
+					cb()
+				})
+			}
+		}
+	})
+
+})
+
+
+/**
+* @module @tyler.thayn/jquery.properties
+*/
+require(['jquery'], ($) => {
+	let dataFn = $.fn.data
+
+	/** data-change event
+	* @event jQuery#data-change
+	* @type {object}
+	* @property {string} name - data property name that changed
+	*/
+	$.fn.extend({
+		/** Gets or Sets Element property
+		* @memberof jQuery#
+		* @function Property
+		* @param {string|object} name - Property name or object of properties
+		* @param {*|function} [value] - Property value.  If function, it is added as listener
+		* @returns {*} [value] - Property value
+		*/
+		Property: function (name, value) {
+			if (typeof name === 'string') {
+				if (typeof value === 'undefined') {
+					return this.data(name)
+				} else if (value instanceof Function) {
+					this.each((i, e) => {
+						$(e).on('data-change', (event, data) => {
+							if (Reflect.has(data, name)) {
+								value.call(this, data[name], name)
+							}
+						})
+					})
+				} else {
+					this.each((i, e) => {
+						$(e).data(name, value)
+					})
+				}
+			} else if (typeof name === 'object') {
+				this.each((i, e) => {
+					Object.keys(name).forEach(key => {
+						$(e).data(key, name[key])
+					})
+				})
+			}
+		},
+		/** Data
+		* @fires jQuery#data-change
+		*/
+		data: function (key, value) {
+			if (typeof key === 'undefined') {
+				return dataFn.call($(this[0]))
+			}
+			if (typeof key === 'string' && typeof value === 'undefined') {
+				return dataFn.call($(this[0]), key)
+			}
+			let ret = dataFn.call(this, key, value)
+			if (typeof key === 'object') {
+				this.triggerHandler('data-change', key)
+			} else if (typeof value !== 'undefined') {
+				let d = {}
+				d[key] = value
+				this.triggerHandler('data-change', d)
+			}
+			return ret
+		}
+	})
+
+})
+
+
+/**
+* @module @tyler.thayn/ui.loader
+*/
+define('ui.loader', ['@js/core', 'jquery'], (core, $) => {
+
+	let defaults = {
+		auto: false,
+		root: '',
+		selector: 'view',
+		scripts: true,
+		styles: true
+	}
+
+	let id = 0;
+	function Id () {
+		return (++id).toString()
+	}
+
+
+	function LoadElement (element, options) {
+		return new Promise((resolve, reject) => {
+			options = Extend({}, defaults, options)
+			let src = $(element).attr('src')
+			$.get(src, res => {
+				let asset = {
+					id: Id(),
+					html: res,
+					elements: [],
+					scripts: [],
+					styles: []
+				}
+				$(res).each((i, e) => {
+					if (e instanceof Element) {
+						if (e instanceof HTMLScriptElement) {
+							asset.scripts.push(e)
+						} else if (e instanceof HTMLLinkElement) {
+							if (options.styles !== false && options.styles === true || options.styles.links === true) {
+								$(e).data('id', asset.id)
+								asset.styles.push(e)
+								$('head').append(e)
+							}
+						} else if (e instanceof HTMLStyleElement) {
+							if (options.styles !== false && options.styles === true || options.styles.inline === true) {
+								$(e).data('id', asset.id)
+								asset.styles.push(e)
+								$('head').append(e)
+							}
+						} else if (e instanceof HTMLScriptElement) {
+							asset.scripts.push(e)
+						} else {
+							asset.elements.push(e)
+						}
+					}
+				})
+				if (asset.elements.length < 1) {return reject(new Error('No elements available to load'))}
+
+				Promise.all(
+					$(asset.elements[0]).find(options.selector).toArray().map(e => {
+						return LoadElement(e, options)
+					})
+				).then(() => {
+					$(asset.elements[0]).data('asset', asset)
+					$(element).replaceWith(asset.elements[0])
+					LoadScripts(asset, options).then(resolve).catch(reject)
+				}).catch(reject)
+			})
+		})
+	}
+
+	function LoadScripts (asset, options) {
+		if (options.scripts === false || asset.scripts.length < 1) {
+			return new Promise((resolve, reject) => {resolve()})
+		}
+		return Promise.all(asset.scripts.map(script => {
+			return new Promise((resolve, reject) => {
+				if (Reflect.has(script, 'src') && script.src != '') {
+					if (options.scripts === true || options.scripts.external === true) {
+						$(script).on('load', resolve)
+						$(script).on('error', reject)
+					} else {
+						return resolve()
+					}
+				} else {
+					if (options.scripts === true || options.scripts.inline === true) {
+						let fn = new Function('$', $(script).text())
+						return resolve(fn.call(asset.elements[0], $))
+					} else {
+						return resolve()
+					}
+				}
+			})
+		}))
+	}
+
+	Object.Extensions.UiLoader = function ($this, options = {}) {
+		if (typeof $this !== 'object') {throw new Error('Non-object provided')}
+		$this._loaderOptions = Extend({}, defaults, options)
+
+
+		Define($this, 'LoadUi', function (options = {}) {
+			options = Extend({}, this._loaderOptions, options)
+			return Promise.all(
+				$(options.selector).toArray().map(e => {
+					return LoadElement(e, options)
+				})
+			)
+		})
+
+		if ($this._loaderOptions.auto) {
+			$(() => {
+				$this.LoadUi()
+			})
+		}
+
+		return $this
+	}
+
 })
 
 

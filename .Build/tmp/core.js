@@ -9,7 +9,7 @@
 }(function (_) {
 
 	/**	
-	 * @module @js/core	
+	 * @module @tyler.thayn/js.core	
 	*/	
 		
 	/**	

@@ -11,7 +11,7 @@
  *    bootstrap: https://getbootstrap.com/
  *    notifyjs-browser: http://notifyjs.com/
  *
- * Date: 2022-09-26T06:19:32.215Z
+ * Date: 2022-10-26T21:18:51.172Z
  */
 
 /**
@@ -51,8 +51,8 @@
  */
 
 /**
- * @js/core@0.13.14
- * @external @js/core
+ * @tyler.thayn/js.core@0.13.14
+ * @external @tyler.thayn/js.core
  * @see {@link https://github.com/tylerthayn/js.core}
  */
 

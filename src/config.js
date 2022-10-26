@@ -9,9 +9,12 @@ require = {
 		'@css/bootstrap',
 		'notifyjs',
 		'@js/core',
+		'jquery.actions',
+		'jquery.properties',
+		'ui.loader',
 		'@css/tts'
 	],
 	callback: (...modules) => {
-		console.log(modules)
+		console.log('@web/core loaded')
 	}
 }
