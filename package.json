@@ -1,7 +1,7 @@
 {
     "name": "@tyler.thayn/web.core",
     "alias": "@web/core",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Core resources for web/browser based item",
     "main": "web.core.js",
     "scripts": {
@@ -29,7 +29,7 @@
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@tyler.thayn/jquery.actions": "^0.1.0",
-        "@tyler.thayn/jquery.properties": "^0.1.0",
+        "@tyler.thayn/jquery.properties": "^0.1.1",
         "@tyler.thayn/js.core": "^0.13.14",
         "@tyler.thayn/ui.loader": "^0.2.0",
         "bootstrap": "^5.2.1",
